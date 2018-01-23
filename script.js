@@ -10,6 +10,8 @@ $(document).ready(function(){
 
   operation = "";
 
+  equaled = false;
+
 /* ----- Function Declarations ----- */
   function checkZero(){
     if(zeroed === true) {
@@ -31,6 +33,8 @@ $(document).ready(function(){
     }
 
     operation = "add";
+
+    equaled = false;
   }
 
   function totalEquals(){
@@ -49,6 +53,8 @@ $(document).ready(function(){
 
       nextNumber = "";
       operation = "";
+
+      equaled = true;
     }
   }
 
@@ -56,16 +62,18 @@ $(document).ready(function(){
   $("#button-1").on("click", function(){
     checkZero();
 
-    if(numberIndex === 0){
+    if(numberIndex === 0 && equaled === false){
       currentNumber += "1";
       console.log(numberIndex);
+      $("#screen-text").append(1);
     }
-    else if(numberIndex === 1) {
+    else if(numberIndex === 1 && equaled === false) {
       nextNumber += "1";
       console.log(numberIndex);
+      $("#screen-text").append(1);
     }
 
-    $("#screen-text").append(1);
+    /* $("#screen-text").append(1); */
   });
 
   $("#button-2").on("click", function(){
@@ -172,6 +180,8 @@ $(document).ready(function(){
     numberIndex = 0;
     currentNumber = "";
     nextNumber = "";
+
+    equaled = false;
   });
 
   $("#button-equals").on("click", function(){
