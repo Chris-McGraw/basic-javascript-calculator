@@ -34,17 +34,20 @@ $(document).ready(function(){
   }
 
   function totalEquals(){
-    currentNumber = parseInt(currentNumber, 10);
-    nextNumber = parseInt(nextNumber, 10);
+    /* currentNumber = parseInt(currentNumber, 10);
+    nextNumber = parseInt(nextNumber, 10); */
 
     if(zeroed === true) {
       $("#screen-text").html(0);
     }
     else if(operation === "add"){
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
+
       currentNumber += nextNumber;
       $("#screen-text").html(currentNumber);
-      nextNumber = "";
 
+      nextNumber = "";
       operation = "";
     }
   }
