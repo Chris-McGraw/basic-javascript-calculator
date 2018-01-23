@@ -8,6 +8,8 @@ $(document).ready(function(){
   currentNumber = "";
   nextNumber = "";
 
+  operation = "";
+
 /* ----- Function Declarations ----- */
   function checkZero(){
     if(zeroed === true) {
@@ -19,35 +21,49 @@ $(document).ready(function(){
   function addition(){
     if(zeroed === true) {
       zeroed = false;
+      currentNumber = "0";
     }
+
     $("#screen-text").append(" + ");
 
     if(numberIndex === 0){
       numberIndex = 1;
     }
 
+    /* if(numberIndex === 1){
+      $("#button-addition").off("click");
+    } */
+
+    operation = "add";
+
     /* $("#button-equals").on("click", function(){
-      currentNumber = parseInt(currentNumber);
-      nextNumber = parseInt(nextNumber);
-
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
       currentNumber += nextNumber;
-    }); */
+      $("#screen-text").html(currentNumber);
 
+      nextNumber = "";
+    }); */
   }
 
   function totalEquals(){
 
-    /* currentNumber = number(currentNumber);
-    nextNumber = number(nextNumber); */
-    currentNumber += nextNumber;
-    $("#screen-text").html(currentNumber);
+    currentNumber = parseInt(currentNumber, 10);
+    nextNumber = parseInt(nextNumber, 10);
 
-  /*  if(zeroed === true) {
+    /* currentNumber += nextNumber;
+    $("#screen-text").html(currentNumber);
+    nextNumber = ""; */
+
+
+    if(zeroed === true) {
       $("#screen-text").html(0);
     }
-    else {
+    else if(operation === "add"){
+      currentNumber += nextNumber;
       $("#screen-text").html(currentNumber);
-    } */
+      nextNumber = "";
+    }
   }
 
 /* ----- Number Fuction Executions ----- */
@@ -56,9 +72,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0){
       currentNumber += "1";
+      console.log(numberIndex);
     }
     else if(numberIndex === 1) {
       nextNumber += "1";
+      console.log(numberIndex);
     }
 
     $("#screen-text").append(1);
@@ -134,10 +152,7 @@ $(document).ready(function(){
   });
 
   $("#button-addition").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
-    }
-    $("#screen-text").append(" + ");
+    addition();
   });
 
   $("#button-subtraction").on("click", function(){
@@ -168,7 +183,9 @@ $(document).ready(function(){
   $("#button-clear").on("click", function(){
     $("#screen-text").html(0);
     zeroed = true;
+    numberIndex = 0;
     currentNumber = "";
+    nextNumber = "";
   });
 
   $("#button-equals").on("click", function(){
