@@ -30,31 +30,12 @@ $(document).ready(function(){
       numberIndex = 1;
     }
 
-    /* if(numberIndex === 1){
-      $("#button-addition").off("click");
-    } */
-
     operation = "add";
-
-    /* $("#button-equals").on("click", function(){
-      currentNumber = parseInt(currentNumber, 10);
-      nextNumber = parseInt(nextNumber, 10);
-      currentNumber += nextNumber;
-      $("#screen-text").html(currentNumber);
-
-      nextNumber = "";
-    }); */
   }
 
   function totalEquals(){
-
     currentNumber = parseInt(currentNumber, 10);
     nextNumber = parseInt(nextNumber, 10);
-
-    /* currentNumber += nextNumber;
-    $("#screen-text").html(currentNumber);
-    nextNumber = ""; */
-
 
     if(zeroed === true) {
       $("#screen-text").html(0);
@@ -63,6 +44,8 @@ $(document).ready(function(){
       currentNumber += nextNumber;
       $("#screen-text").html(currentNumber);
       nextNumber = "";
+
+      operation = "";
     }
   }
 
