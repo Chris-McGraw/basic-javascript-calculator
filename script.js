@@ -9,8 +9,9 @@ $(document).ready(function(){
   nextNumber = "";
 
   operation = "";
-
   equaled = false;
+
+  operationStatus = false;
 
 /* ----- Function Declarations ----- */
   function checkZero(){
@@ -33,8 +34,9 @@ $(document).ready(function(){
     }
 
     operation = "add";
-
     equaled = false;
+
+    operationStatus = true;
   }
 
   function totalEquals(){
@@ -53,8 +55,9 @@ $(document).ready(function(){
 
       nextNumber = "";
       operation = "";
-
       equaled = true;
+
+      operationStatus = false;
     }
   }
 
@@ -146,7 +149,11 @@ $(document).ready(function(){
   });
 
   $("#button-addition").on("click", function(){
-    addition();
+
+    if(operationStatus === false) {
+      addition();
+    }
+
   });
 
   $("#button-subtraction").on("click", function(){
@@ -180,8 +187,9 @@ $(document).ready(function(){
     numberIndex = 0;
     currentNumber = "";
     nextNumber = "";
-
     equaled = false;
+
+    operationStatus = false;
   });
 
   $("#button-equals").on("click", function(){
