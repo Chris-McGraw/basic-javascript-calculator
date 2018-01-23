@@ -12,6 +12,15 @@ $(document).ready(function(){
     }
   }
 
+  function totalEquals(){
+    if(zeroed === true) {
+      $("#screen-text").html(0);
+    }
+    else {
+      $("#screen-text").html(currentNumber);
+    }
+  }
+
 /* ----- Number Fuction Executions ----- */
   $("#button-1").on("click", function(){
     checkZero();
@@ -127,6 +136,7 @@ $(document).ready(function(){
   });
 
   $("#button-equals").on("click", function(){
-    $("#screen-text").html(currentNumber);
+    totalEquals();
   });
+
 });
