@@ -2,7 +2,11 @@ $(document).ready(function(){
 
 /* ----- Variable Declarations ----- */
   zeroed = true;
+
+  numberIndex = 0;
+
   currentNumber = "";
+  nextNumber = "";
 
 /* ----- Function Declarations ----- */
   function checkZero(){
@@ -12,19 +16,51 @@ $(document).ready(function(){
     }
   }
 
-  function totalEquals(){
+  function addition(){
     if(zeroed === true) {
+      zeroed = false;
+    }
+    $("#screen-text").append(" + ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    /* $("#button-equals").on("click", function(){
+      currentNumber = parseInt(currentNumber);
+      nextNumber = parseInt(nextNumber);
+
+      currentNumber += nextNumber;
+    }); */
+
+  }
+
+  function totalEquals(){
+
+    /* currentNumber = number(currentNumber);
+    nextNumber = number(nextNumber); */
+    currentNumber += nextNumber;
+    $("#screen-text").html(currentNumber);
+
+  /*  if(zeroed === true) {
       $("#screen-text").html(0);
     }
     else {
       $("#screen-text").html(currentNumber);
-    }
+    } */
   }
 
 /* ----- Number Fuction Executions ----- */
   $("#button-1").on("click", function(){
     checkZero();
-    currentNumber += "1";
+
+    if(numberIndex === 0){
+      currentNumber += "1";
+    }
+    else if(numberIndex === 1) {
+      nextNumber += "1";
+    }
+
     $("#screen-text").append(1);
   });
 
