@@ -33,6 +33,21 @@ $(document).ready(function(){
     operation = "add";
   }
 
+  function subtraction(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
+
+    $("#screen-text").append(" - ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    operation = "subtract";
+  }
+
   function totalEquals(){
     currentNumber = parseInt(currentNumber, 10);
     nextNumber = parseInt(nextNumber, 10);
@@ -40,11 +55,18 @@ $(document).ready(function(){
     if(zeroed === true) {
       $("#screen-text").html(0);
     }
+    
     else if(operation === "add"){
       currentNumber += nextNumber;
       $("#screen-text").html(currentNumber);
       nextNumber = "";
+      operation = "";
+    }
 
+    else if(operation === "subtract"){
+      currentNumber -= nextNumber;
+      $("#screen-text").html(currentNumber);
+      nextNumber = "";
       operation = "";
     }
   }
@@ -139,10 +161,7 @@ $(document).ready(function(){
   });
 
   $("#button-subtraction").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
-    }
-    $("#screen-text").append(" - ");
+    subtraction();
   });
 
 
