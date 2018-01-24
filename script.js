@@ -21,6 +21,42 @@ $(document).ready(function(){
     }
   }
 
+  function multiplication(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
+
+    $("#screen-text").append(" x ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    operation = "multiply";
+    equaled = false;
+
+    operationStatus = true;
+  }
+
+  function division(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
+
+    $("#screen-text").append(" % ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    operation = "divide";
+    equaled = false;
+
+    operationStatus = true;
+  }
+
   function addition(){
     if(zeroed === true) {
       zeroed = false;
@@ -39,18 +75,77 @@ $(document).ready(function(){
     operationStatus = true;
   }
 
+  function subtraction(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
+
+    $("#screen-text").append(" - ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    operation = "subtract";
+    equaled = false;
+
+    operationStatus = true;
+  }
+
   function totalEquals(){
-    /* currentNumber = parseInt(currentNumber, 10);
-    nextNumber = parseInt(nextNumber, 10); */
 
     if(zeroed === true) {
       $("#screen-text").html(0);
     }
+
+    else if(operation === "multiply"){
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
+
+      currentNumber *= nextNumber;
+      $("#screen-text").html(currentNumber);
+
+      nextNumber = "";
+      operation = "";
+      equaled = true;
+
+      operationStatus = false;
+    }
+
+    else if(operation === "divide"){
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
+
+      currentNumber /= nextNumber;
+      $("#screen-text").html(currentNumber);
+
+      nextNumber = "";
+      operation = "";
+      equaled = true;
+
+      operationStatus = false;
+    }
+
     else if(operation === "add"){
       currentNumber = parseInt(currentNumber, 10);
       nextNumber = parseInt(nextNumber, 10);
 
       currentNumber += nextNumber;
+      $("#screen-text").html(currentNumber);
+
+      nextNumber = "";
+      operation = "";
+      equaled = true;
+
+      operationStatus = false;
+    }
+
+    else if(operation === "subtract"){
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
+
+      currentNumber -= nextNumber;
       $("#screen-text").html(currentNumber);
 
       nextNumber = "";
@@ -224,32 +319,27 @@ $(document).ready(function(){
 
 /* ----- Operation Fuction Executions ----- */
   $("#button-multiplication").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
+    if(operationStatus === false) {
+      multiplication();
     }
-    $("#screen-text").append(" x ");
   });
 
   $("#button-division").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
+    if(operationStatus === false) {
+      division();
     }
-    $("#screen-text").append(" % ");
   });
 
   $("#button-addition").on("click", function(){
-
     if(operationStatus === false) {
       addition();
     }
-
   });
 
   $("#button-subtraction").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
+    if(operationStatus === false) {
+      subtraction();
     }
-    $("#screen-text").append(" - ");
   });
 
 
