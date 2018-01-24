@@ -12,6 +12,7 @@ $(document).ready(function(){
   equaled = false;
 
   operationStatus = false;
+  decimalStatus = false;
 
 /* ----- Function Declarations ----- */
   function checkZero(){
@@ -37,6 +38,7 @@ $(document).ready(function(){
     equaled = false;
 
     operationStatus = true;
+    decimalStatus = false;
   }
 
   function division(){
@@ -55,6 +57,7 @@ $(document).ready(function(){
     equaled = false;
 
     operationStatus = true;
+    decimalStatus = false;
   }
 
   function addition(){
@@ -73,6 +76,7 @@ $(document).ready(function(){
     equaled = false;
 
     operationStatus = true;
+    decimalStatus = false;
   }
 
   function subtraction(){
@@ -91,6 +95,30 @@ $(document).ready(function(){
     equaled = false;
 
     operationStatus = true;
+    decimalStatus = false;
+  }
+
+  function addDecimal(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
+
+    if(numberIndex === 0 && equaled === false){
+      currentNumber += ".";
+      $("#screen-text").append(".");
+    }
+
+    else if(nextNumber === "" && numberIndex === 1 && equaled === false){
+      nextNumber += ".";
+      $("#screen-text").append("0.");
+    }
+
+    else if(numberIndex === 1 && equaled === false){
+      nextNumber += ".";
+      $("#screen-text").append(".");
+    }
+    decimalStatus = true;
   }
 
   function totalEquals(){
@@ -100,8 +128,8 @@ $(document).ready(function(){
     }
 
     else if(operation === "multiply"){
-      currentNumber = parseInt(currentNumber, 10);
-      nextNumber = parseInt(nextNumber, 10);
+      currentNumber = parseFloat(currentNumber, 10);
+      nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber *= nextNumber;
       $("#screen-text").html(currentNumber);
@@ -114,8 +142,8 @@ $(document).ready(function(){
     }
 
     else if(operation === "divide"){
-      currentNumber = parseInt(currentNumber, 10);
-      nextNumber = parseInt(nextNumber, 10);
+      currentNumber = parseFloat(currentNumber, 10);
+      nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber /= nextNumber;
       $("#screen-text").html(currentNumber);
@@ -128,8 +156,8 @@ $(document).ready(function(){
     }
 
     else if(operation === "add"){
-      currentNumber = parseInt(currentNumber, 10);
-      nextNumber = parseInt(nextNumber, 10);
+      currentNumber = parseFloat(currentNumber, 10);
+      nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber += nextNumber;
       $("#screen-text").html(currentNumber);
@@ -142,8 +170,8 @@ $(document).ready(function(){
     }
 
     else if(operation === "subtract"){
-      currentNumber = parseInt(currentNumber, 10);
-      nextNumber = parseInt(nextNumber, 10);
+      currentNumber = parseFloat(currentNumber, 10);
+      nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber -= nextNumber;
       $("#screen-text").html(currentNumber);
@@ -162,13 +190,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "1";
-      console.log(numberIndex);
       $("#screen-text").append(1);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "1";
-      console.log(numberIndex);
       $("#screen-text").append(1);
     }
   });
@@ -178,13 +204,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "2";
-      console.log(numberIndex);
       $("#screen-text").append(2);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "2";
-      console.log(numberIndex);
       $("#screen-text").append(2);
     }
   });
@@ -194,13 +218,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "3";
-      console.log(numberIndex);
       $("#screen-text").append(3);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "3";
-      console.log(numberIndex);
       $("#screen-text").append(3);
     }
   });
@@ -210,13 +232,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "4";
-      console.log(numberIndex);
       $("#screen-text").append(4);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "4";
-      console.log(numberIndex);
       $("#screen-text").append(4);
     }
   });
@@ -226,13 +246,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "5";
-      console.log(numberIndex);
       $("#screen-text").append(5);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "5";
-      console.log(numberIndex);
       $("#screen-text").append(5);
     }
   });
@@ -242,13 +260,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "6";
-      console.log(numberIndex);
       $("#screen-text").append(6);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "6";
-      console.log(numberIndex);
       $("#screen-text").append(6);
     }
   });
@@ -258,13 +274,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "7";
-      console.log(numberIndex);
       $("#screen-text").append(7);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "7";
-      console.log(numberIndex);
       $("#screen-text").append(7);
     }
   });
@@ -274,13 +288,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "8";
-      console.log(numberIndex);
       $("#screen-text").append(8);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "8";
-      console.log(numberIndex);
       $("#screen-text").append(8);
     }
   });
@@ -290,13 +302,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "9";
-      console.log(numberIndex);
       $("#screen-text").append(9);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "9";
-      console.log(numberIndex);
       $("#screen-text").append(9);
     }
   });
@@ -306,13 +316,11 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "0";
-      console.log(numberIndex);
       $("#screen-text").append(0);
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
-      console.log(numberIndex);
       $("#screen-text").append(0);
     }
   });
@@ -343,7 +351,6 @@ $(document).ready(function(){
   });
 
 
-
   $("#button-positive-toggle").on("click", function(){
     if(zeroed === true) {
       zeroed = false;
@@ -351,11 +358,11 @@ $(document).ready(function(){
     $("#screen-text").append(" FIX ");
   });
 
+
   $("#button-decimal-point").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
+    if(decimalStatus === false){
+      addDecimal();
     }
-    $("#screen-text").append(".");
   });
 
 
@@ -369,6 +376,7 @@ $(document).ready(function(){
     equaled = false;
 
     operationStatus = false;
+    decimalStatus = false;
   });
 
   $("#button-equals").on("click", function(){
