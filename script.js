@@ -39,18 +39,49 @@ $(document).ready(function(){
     operationStatus = true;
   }
 
-  function totalEquals(){
-    /* currentNumber = parseInt(currentNumber, 10);
-    nextNumber = parseInt(nextNumber, 10); */
+  function subtraction(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
 
+    $("#screen-text").append(" - ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    operation = "subtract";
+    equaled = false;
+
+    operationStatus = true;
+  }
+
+  function totalEquals(){
+    
     if(zeroed === true) {
       $("#screen-text").html(0);
     }
+
     else if(operation === "add"){
       currentNumber = parseInt(currentNumber, 10);
       nextNumber = parseInt(nextNumber, 10);
 
       currentNumber += nextNumber;
+      $("#screen-text").html(currentNumber);
+
+      nextNumber = "";
+      operation = "";
+      equaled = true;
+
+      operationStatus = false;
+    }
+
+    else if(operation === "subtract"){
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
+
+      currentNumber -= nextNumber;
       $("#screen-text").html(currentNumber);
 
       nextNumber = "";
@@ -224,32 +255,21 @@ $(document).ready(function(){
 
 /* ----- Operation Fuction Executions ----- */
   $("#button-multiplication").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
-    }
-    $("#screen-text").append(" x ");
   });
 
   $("#button-division").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
-    }
-    $("#screen-text").append(" % ");
   });
 
   $("#button-addition").on("click", function(){
-
     if(operationStatus === false) {
       addition();
     }
-
   });
 
   $("#button-subtraction").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
+    if(operationStatus === false) {
+      subtraction();
     }
-    $("#screen-text").append(" - ");
   });
 
 
