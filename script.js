@@ -39,6 +39,24 @@ $(document).ready(function(){
     operationStatus = true;
   }
 
+  function division(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
+
+    $("#screen-text").append(" % ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    operation = "divide";
+    equaled = false;
+
+    operationStatus = true;
+  }
+
   function addition(){
     if(zeroed === true) {
       zeroed = false;
@@ -86,6 +104,20 @@ $(document).ready(function(){
       nextNumber = parseInt(nextNumber, 10);
 
       currentNumber *= nextNumber;
+      $("#screen-text").html(currentNumber);
+
+      nextNumber = "";
+      operation = "";
+      equaled = true;
+
+      operationStatus = false;
+    }
+
+    else if(operation === "divide"){
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
+
+      currentNumber /= nextNumber;
       $("#screen-text").html(currentNumber);
 
       nextNumber = "";
@@ -293,6 +325,9 @@ $(document).ready(function(){
   });
 
   $("#button-division").on("click", function(){
+    if(operationStatus === false) {
+      division();
+    }
   });
 
   $("#button-addition").on("click", function(){
