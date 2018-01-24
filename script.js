@@ -21,6 +21,24 @@ $(document).ready(function(){
     }
   }
 
+  function multiplication(){
+    if(zeroed === true) {
+      zeroed = false;
+      currentNumber = "0";
+    }
+
+    $("#screen-text").append(" x ");
+
+    if(numberIndex === 0){
+      numberIndex = 1;
+    }
+
+    operation = "multiply";
+    equaled = false;
+
+    operationStatus = true;
+  }
+
   function addition(){
     if(zeroed === true) {
       zeroed = false;
@@ -58,9 +76,23 @@ $(document).ready(function(){
   }
 
   function totalEquals(){
-    
+
     if(zeroed === true) {
       $("#screen-text").html(0);
+    }
+
+    else if(operation === "multiply"){
+      currentNumber = parseInt(currentNumber, 10);
+      nextNumber = parseInt(nextNumber, 10);
+
+      currentNumber *= nextNumber;
+      $("#screen-text").html(currentNumber);
+
+      nextNumber = "";
+      operation = "";
+      equaled = true;
+
+      operationStatus = false;
     }
 
     else if(operation === "add"){
@@ -255,6 +287,9 @@ $(document).ready(function(){
 
 /* ----- Operation Fuction Executions ----- */
   $("#button-multiplication").on("click", function(){
+    if(operationStatus === false) {
+      multiplication();
+    }
   });
 
   $("#button-division").on("click", function(){
