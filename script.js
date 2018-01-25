@@ -28,7 +28,9 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" x ");
+    /* $("#screen-text").append(" x "); */
+    $("#screen-text").html("");
+    $("#button-multiplication").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -47,7 +49,9 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" % ");
+    /* $("#screen-text").append(" % "); */
+    $("#screen-text").html("");
+    $("#button-division").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -66,7 +70,9 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" + ");
+    /* $("#screen-text").append(" + "); */
+    $("#screen-text").html("");
+    $("#button-addition").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -85,7 +91,9 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" - ");
+    /* $("#screen-text").append(" - "); */
+    $("#screen-text").html("");
+    $("#button-subtraction").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -136,6 +144,7 @@ $(document).ready(function(){
       currentNumber = Math.round(100 * currentNumber)/100;
 
       $("#screen-text").html(currentNumber);
+      $("#button-multiplication").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -153,6 +162,7 @@ $(document).ready(function(){
       currentNumber = Math.round(100 * currentNumber)/100;
 
       $("#screen-text").html(currentNumber);
+      $("#button-division").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -170,6 +180,7 @@ $(document).ready(function(){
       currentNumber = Math.round(100 * currentNumber)/100;
 
       $("#screen-text").html(currentNumber);
+      $("#button-addition").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -187,6 +198,7 @@ $(document).ready(function(){
       currentNumber = Math.round(100 * currentNumber)/100;
 
       $("#screen-text").html(currentNumber);
+      $("#button-subtraction").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -381,6 +393,12 @@ $(document).ready(function(){
 
   $("#button-clear").on("click", function(){
     $("#screen-text").html(0);
+
+    $("#button-multiplication").removeClass("button-pressed");
+    $("#button-division").removeClass("button-pressed");
+    $("#button-addition").removeClass("button-pressed");
+    $("#button-subtraction").removeClass("button-pressed");
+
     zeroed = true;
     numberIndex = 0;
     currentNumber = "";
