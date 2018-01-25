@@ -22,6 +22,18 @@ $(document).ready(function(){
     }
   }
 
+  function checkScreenSize(){
+    if($("#screen-text").html().length > 12) {
+      $("#screen-text").html("CHARACTER LIMIT");
+    }
+  }
+
+  function checkScreenSizeOperator(){
+    if($("#screen-text").html().length > 14) {
+      $("#screen-text").html("CHARACTER LIMIT");
+    }
+  }
+
   function multiplication(){
     if(zeroed === true) {
       zeroed = false;
@@ -29,6 +41,7 @@ $(document).ready(function(){
     }
 
     $("#screen-text").append(" x ");
+    checkScreenSizeOperator();
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -48,6 +61,7 @@ $(document).ready(function(){
     }
 
     $("#screen-text").append(" % ");
+    checkScreenSizeOperator();
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -67,6 +81,7 @@ $(document).ready(function(){
     }
 
     $("#screen-text").append(" + ");
+    checkScreenSizeOperator();
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -86,6 +101,7 @@ $(document).ready(function(){
     }
 
     $("#screen-text").append(" - ");
+    checkScreenSizeOperator();
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -119,6 +135,8 @@ $(document).ready(function(){
       $("#screen-text").append(".");
     }
     decimalStatus = true;
+
+    checkScreenSize();
   }
 
   function totalEquals(){
@@ -194,6 +212,8 @@ $(document).ready(function(){
 
       operationStatus = false;
     }
+
+    checkScreenSize();
   }
 
 /* ----- Number Fuction Executions ----- */
@@ -209,6 +229,8 @@ $(document).ready(function(){
       nextNumber += "1";
       $("#screen-text").append(1);
     }
+
+    checkScreenSize();
   });
 
   $("#button-2").on("click", function(){
@@ -223,6 +245,8 @@ $(document).ready(function(){
       nextNumber += "2";
       $("#screen-text").append(2);
     }
+
+    checkScreenSize();
   });
 
   $("#button-3").on("click", function(){
@@ -237,6 +261,8 @@ $(document).ready(function(){
       nextNumber += "3";
       $("#screen-text").append(3);
     }
+
+    checkScreenSize();
   });
 
   $("#button-4").on("click", function(){
@@ -251,6 +277,8 @@ $(document).ready(function(){
       nextNumber += "4";
       $("#screen-text").append(4);
     }
+
+    checkScreenSize();
   });
 
   $("#button-5").on("click", function(){
@@ -265,6 +293,8 @@ $(document).ready(function(){
       nextNumber += "5";
       $("#screen-text").append(5);
     }
+
+    checkScreenSize();
   });
 
   $("#button-6").on("click", function(){
@@ -279,6 +309,8 @@ $(document).ready(function(){
       nextNumber += "6";
       $("#screen-text").append(6);
     }
+
+    checkScreenSize();
   });
 
   $("#button-7").on("click", function(){
@@ -293,6 +325,8 @@ $(document).ready(function(){
       nextNumber += "7";
       $("#screen-text").append(7);
     }
+
+    checkScreenSize();
   });
 
   $("#button-8").on("click", function(){
@@ -307,6 +341,8 @@ $(document).ready(function(){
       nextNumber += "8";
       $("#screen-text").append(8);
     }
+
+    checkScreenSize();
   });
 
   $("#button-9").on("click", function(){
@@ -321,6 +357,8 @@ $(document).ready(function(){
       nextNumber += "9";
       $("#screen-text").append(9);
     }
+
+    checkScreenSize();
   });
 
   $("#button-0").on("click", function(){
@@ -335,6 +373,8 @@ $(document).ready(function(){
       nextNumber += "0";
       $("#screen-text").append(0);
     }
+
+    checkScreenSize();
   });
 
 /* ----- Operation Fuction Executions ----- */
