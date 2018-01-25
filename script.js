@@ -132,6 +132,9 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber *= nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
 
       nextNumber = "";
@@ -146,6 +149,9 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber /= nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
 
       nextNumber = "";
@@ -160,6 +166,9 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber += nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
 
       nextNumber = "";
@@ -174,6 +183,9 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber -= nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
 
       nextNumber = "";
