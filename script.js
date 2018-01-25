@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 /* ----- Variable Declarations ----- */
+
   zeroed = true;
 
   numberIndex = 0;
@@ -15,10 +16,17 @@ $(document).ready(function(){
   decimalStatus = false;
 
 /* ----- Function Declarations ----- */
+
   function checkZero(){
     if(zeroed === true) {
       $("#screen-text").html("");
       zeroed = false;
+    }
+  }
+
+  function checkScreenSize(){
+    if($("#screen-text").html().length > 12) {
+      $("#screen-text").html("CHARACTER LIMIT");
     }
   }
 
@@ -28,7 +36,8 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" x ");
+    $("#screen-text").html("");
+    $("#button-multiplication").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -47,7 +56,8 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" % ");
+    $("#screen-text").html("");
+    $("#button-division").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -66,7 +76,8 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" + ");
+    $("#screen-text").html("");
+    $("#button-addition").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -85,7 +96,8 @@ $(document).ready(function(){
       currentNumber = "0";
     }
 
-    $("#screen-text").append(" - ");
+    $("#screen-text").html("");
+    $("#button-subtraction").addClass("button-pressed");
 
     if(numberIndex === 0){
       numberIndex = 1;
@@ -132,7 +144,11 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber *= nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
+      $("#button-multiplication").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -146,7 +162,11 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber /= nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
+      $("#button-division").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -160,7 +180,11 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber += nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
+      $("#button-addition").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -174,7 +198,11 @@ $(document).ready(function(){
       nextNumber = parseFloat(nextNumber, 10);
 
       currentNumber -= nextNumber;
+
+      currentNumber = Math.round(100 * currentNumber)/100;
+
       $("#screen-text").html(currentNumber);
+      $("#button-subtraction").removeClass("button-pressed");
 
       nextNumber = "";
       operation = "";
@@ -182,9 +210,12 @@ $(document).ready(function(){
 
       operationStatus = false;
     }
+
+    checkScreenSize();
   }
 
-/* ----- Number Fuction Executions ----- */
+/* ----- Number Button Function Executions ----- */
+
   $("#button-1").on("click", function(){
     checkZero();
 
@@ -197,6 +228,8 @@ $(document).ready(function(){
       nextNumber += "1";
       $("#screen-text").append(1);
     }
+
+    checkScreenSize();
   });
 
   $("#button-2").on("click", function(){
@@ -211,6 +244,8 @@ $(document).ready(function(){
       nextNumber += "2";
       $("#screen-text").append(2);
     }
+
+    checkScreenSize();
   });
 
   $("#button-3").on("click", function(){
@@ -225,6 +260,8 @@ $(document).ready(function(){
       nextNumber += "3";
       $("#screen-text").append(3);
     }
+
+    checkScreenSize();
   });
 
   $("#button-4").on("click", function(){
@@ -239,6 +276,8 @@ $(document).ready(function(){
       nextNumber += "4";
       $("#screen-text").append(4);
     }
+
+    checkScreenSize();
   });
 
   $("#button-5").on("click", function(){
@@ -253,6 +292,8 @@ $(document).ready(function(){
       nextNumber += "5";
       $("#screen-text").append(5);
     }
+
+    checkScreenSize();
   });
 
   $("#button-6").on("click", function(){
@@ -267,6 +308,8 @@ $(document).ready(function(){
       nextNumber += "6";
       $("#screen-text").append(6);
     }
+
+    checkScreenSize();
   });
 
   $("#button-7").on("click", function(){
@@ -281,6 +324,8 @@ $(document).ready(function(){
       nextNumber += "7";
       $("#screen-text").append(7);
     }
+
+    checkScreenSize();
   });
 
   $("#button-8").on("click", function(){
@@ -295,6 +340,8 @@ $(document).ready(function(){
       nextNumber += "8";
       $("#screen-text").append(8);
     }
+
+    checkScreenSize();
   });
 
   $("#button-9").on("click", function(){
@@ -309,6 +356,8 @@ $(document).ready(function(){
       nextNumber += "9";
       $("#screen-text").append(9);
     }
+
+    checkScreenSize();
   });
 
   $("#button-0").on("click", function(){
@@ -323,9 +372,12 @@ $(document).ready(function(){
       nextNumber += "0";
       $("#screen-text").append(0);
     }
+
+    checkScreenSize();
   });
 
-/* ----- Operation Fuction Executions ----- */
+/* ----- Operation Button Function Executions ----- */
+
   $("#button-multiplication").on("click", function(){
     if(operationStatus === false) {
       multiplication();
@@ -350,6 +402,7 @@ $(document).ready(function(){
     }
   });
 
+/* !!! ----- WORK IN PROGRESS STARTS ----- !!! */
 
   $("#button-positive-toggle").on("click", function(){
     if(zeroed === true) {
@@ -358,6 +411,8 @@ $(document).ready(function(){
     $("#screen-text").append(" FIX ");
   });
 
+/* !!! ----- WORK IN PROGRESS ENDS !!! ----- */
+
 
   $("#button-decimal-point").on("click", function(){
     if(decimalStatus === false){
@@ -365,10 +420,15 @@ $(document).ready(function(){
     }
   });
 
-
+/* ----- Bottom Button Function Executions ----- */
 
   $("#button-clear").on("click", function(){
     $("#screen-text").html(0);
+    $("#button-multiplication").removeClass("button-pressed");
+    $("#button-division").removeClass("button-pressed");
+    $("#button-addition").removeClass("button-pressed");
+    $("#button-subtraction").removeClass("button-pressed");
+
     zeroed = true;
     numberIndex = 0;
     currentNumber = "";
