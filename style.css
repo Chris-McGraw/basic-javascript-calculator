@@ -73,6 +73,7 @@ ul {
 
 .calc-button:active {
   box-shadow: none;
+  background-color: #878787;
 }
 
 .button-text {
@@ -99,4 +100,10 @@ ul {
 
 .calc-button-bottom:active {
   box-shadow: none;
+  background-color: #878787;
+}
+
+.button-pressed {
+  box-shadow: none;
+  background-color: #878787;
 }
