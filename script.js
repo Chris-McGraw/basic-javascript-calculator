@@ -30,6 +30,12 @@ $(document).ready(function(){
     }
   }
 
+  function checkScreenSizeAnswer(){
+    if($("#screen-text").html().length > 15) {
+      $("#screen-text").html("CHARACTER LIMIT");
+    }
+  }
+
   function multiplication(){
     if(zeroed === true) {
       zeroed = false;
@@ -147,7 +153,7 @@ $(document).ready(function(){
 
       currentNumber = Math.round(100 * currentNumber)/100;
 
-      $("#screen-text").html(currentNumber);
+      $("#screen-text").html(currentNumber.toLocaleString());
       $("#button-multiplication").removeClass("button-pressed");
 
       nextNumber = "";
@@ -165,7 +171,7 @@ $(document).ready(function(){
 
       currentNumber = Math.round(100 * currentNumber)/100;
 
-      $("#screen-text").html(currentNumber);
+      $("#screen-text").html(currentNumber.toLocaleString());
       $("#button-division").removeClass("button-pressed");
 
       nextNumber = "";
@@ -183,7 +189,7 @@ $(document).ready(function(){
 
       currentNumber = Math.round(100 * currentNumber)/100;
 
-      $("#screen-text").html(currentNumber);
+      $("#screen-text").html(currentNumber.toLocaleString());
       $("#button-addition").removeClass("button-pressed");
 
       nextNumber = "";
@@ -201,7 +207,7 @@ $(document).ready(function(){
 
       currentNumber = Math.round(100 * currentNumber)/100;
 
-      $("#screen-text").html(currentNumber);
+      $("#screen-text").html(currentNumber.toLocaleString());
       $("#button-subtraction").removeClass("button-pressed");
 
       nextNumber = "";
@@ -211,7 +217,7 @@ $(document).ready(function(){
       operationStatus = false;
     }
 
-    checkScreenSize();
+    checkScreenSizeAnswer();
   }
 
 /* ----- Number Button Function Executions ----- */
