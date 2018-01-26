@@ -235,7 +235,9 @@ $(document).ready(function(){
       $("#screen-text").append(1);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-2").on("click", function(){
@@ -251,7 +253,9 @@ $(document).ready(function(){
       $("#screen-text").append(2);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-3").on("click", function(){
@@ -267,7 +271,9 @@ $(document).ready(function(){
       $("#screen-text").append(3);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-4").on("click", function(){
@@ -283,7 +289,9 @@ $(document).ready(function(){
       $("#screen-text").append(4);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-5").on("click", function(){
@@ -299,7 +307,9 @@ $(document).ready(function(){
       $("#screen-text").append(5);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-6").on("click", function(){
@@ -315,7 +325,9 @@ $(document).ready(function(){
       $("#screen-text").append(6);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-7").on("click", function(){
@@ -331,7 +343,9 @@ $(document).ready(function(){
       $("#screen-text").append(7);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-8").on("click", function(){
@@ -347,7 +361,9 @@ $(document).ready(function(){
       $("#screen-text").append(8);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-9").on("click", function(){
@@ -363,7 +379,9 @@ $(document).ready(function(){
       $("#screen-text").append(9);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
   $("#button-0").on("click", function(){
@@ -379,7 +397,9 @@ $(document).ready(function(){
       $("#screen-text").append(0);
     }
 
-    checkScreenSize();
+    if(equaled === false) {
+      checkScreenSize();
+    }
   });
 
 /* ----- Operation Button Function Executions ----- */
