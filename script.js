@@ -15,6 +15,8 @@ $(document).ready(function(){
   operationStatus = false;
   decimalStatus = false;
 
+  negativeStatus = false;
+
 /* ----- Function Declarations ----- */
 
   function checkZero(){
@@ -54,6 +56,7 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
   function division(){
@@ -74,6 +77,7 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
   function addition(){
@@ -94,6 +98,7 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
   function subtraction(){
@@ -114,6 +119,7 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
   function addDecimal(){
@@ -138,6 +144,33 @@ $(document).ready(function(){
     }
     decimalStatus = true;
   }
+
+
+  function negativeToggle(){
+    if(zeroed === false && numberIndex === 0 && equaled === false) {
+
+      currentNumber = "-" + currentNumber;
+
+      $("#screen-text").prepend("-");
+
+      negativeStatus = true;
+    }
+
+    else if(numberIndex === 1 && equaled === false && nextNumber.length >= 1) {
+
+      nextNumber = "-" + nextNumber;
+
+      $("#screen-text").prepend("-");
+
+      negativeStatus = true;
+    }
+
+    if(equaled === false) {
+      checkScreenSize();
+    }
+
+  }
+
 
   function totalEquals(){
 
@@ -431,10 +464,9 @@ $(document).ready(function(){
 /* !!! ----- WORK IN PROGRESS STARTS ----- !!! */
 
   $("#button-positive-toggle").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
+    if(negativeStatus === false) {
+      negativeToggle();
     }
-    $("#screen-text").append(" FIX ");
   });
 
 /* !!! ----- WORK IN PROGRESS ENDS !!! ----- */
@@ -463,6 +495,7 @@ $(document).ready(function(){
 
     operationStatus = false;
     decimalStatus = false;
+    negativeStatus = false;
   });
 
   $("#button-equals").on("click", function(){
