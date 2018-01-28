@@ -14,6 +14,7 @@ $(document).ready(function(){
 
   operationStatus = false;
   decimalStatus = false;
+  negativeStatus = false;
 
 /* ----- Function Declarations ----- */
 
@@ -54,6 +55,7 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
   function division(){
@@ -74,6 +76,7 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
   function addition(){
@@ -94,6 +97,7 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
   function subtraction(){
@@ -114,33 +118,51 @@ $(document).ready(function(){
 
     operationStatus = true;
     decimalStatus = false;
+    negativeStatus = false;
   }
 
-  function addDecimal(){
+  function addDecimal() {
     if(zeroed === true) {
       zeroed = false;
       currentNumber = "0";
     }
 
-    if(numberIndex === 0 && equaled === false){
+    if(numberIndex === 0 && equaled === false) {
       currentNumber += ".";
       $("#screen-text").append(".");
     }
 
-    else if(nextNumber === "" && numberIndex === 1 && equaled === false){
+    else if(nextNumber === "" && numberIndex === 1 && equaled === false) {
       nextNumber += ".";
       $("#screen-text").append("0.");
     }
 
-    else if(numberIndex === 1 && equaled === false){
+    else if(numberIndex === 1 && equaled === false) {
       nextNumber += ".";
       $("#screen-text").append(".");
     }
     decimalStatus = true;
   }
 
-  function totalEquals(){
+  function negativeToggle() {
+    if(zeroed === false && numberIndex === 0 && equaled === false) {
+      currentNumber = "-" + currentNumber;
+      $("#screen-text").prepend("-");
+      negativeStatus = true;
+    }
 
+    else if(numberIndex === 1 && equaled === false && nextNumber.length >= 1) {
+      nextNumber = "-" + nextNumber;
+      $("#screen-text").prepend("-");
+      negativeStatus = true;
+    }
+
+    if(equaled === false) {
+      checkScreenSize();
+    }
+  }
+
+  function totalEquals() {
     if(zeroed === true) {
       $("#screen-text").html(0);
     }
@@ -428,25 +450,21 @@ $(document).ready(function(){
     }
   });
 
-/* !!! ----- WORK IN PROGRESS STARTS ----- !!! */
-
-  $("#button-positive-toggle").on("click", function(){
-    if(zeroed === true) {
-      zeroed = false;
-    }
-    $("#screen-text").append(" FIX ");
-  });
-
-/* !!! ----- WORK IN PROGRESS ENDS !!! ----- */
-
-
   $("#button-decimal-point").on("click", function(){
     if(decimalStatus === false){
       addDecimal();
     }
   });
 
-/* ----- Bottom Button Function Executions ----- */
+  $("#button-positive-toggle").on("click", function(){
+    if(negativeStatus === false) {
+      negativeToggle();
+    }
+  });
+
+  $("#button-equals").on("click", function(){
+    totalEquals();
+  });
 
   $("#button-clear").on("click", function(){
     $("#screen-text").html(0);
@@ -463,10 +481,7 @@ $(document).ready(function(){
 
     operationStatus = false;
     decimalStatus = false;
-  });
-
-  $("#button-equals").on("click", function(){
-    totalEquals();
+    negativeStatus = false;
   });
 
 });
