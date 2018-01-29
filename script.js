@@ -167,7 +167,7 @@ $(document).ready(function(){
       $("#screen-text").html(0);
     }
 
-    else if(operation === "multiply"){
+    else if(operation === "multiply" && nextNumber !== ""){
       currentNumber = parseFloat(currentNumber, 10);
       nextNumber = parseFloat(nextNumber, 10);
 
@@ -185,7 +185,7 @@ $(document).ready(function(){
       operationStatus = false;
     }
 
-    else if(operation === "divide"){
+    else if(operation === "divide" && nextNumber !== ""){
       currentNumber = parseFloat(currentNumber, 10);
       nextNumber = parseFloat(nextNumber, 10);
 
@@ -203,7 +203,7 @@ $(document).ready(function(){
       operationStatus = false;
     }
 
-    else if(operation === "add"){
+    else if(operation === "add" && nextNumber !== ""){
       currentNumber = parseFloat(currentNumber, 10);
       nextNumber = parseFloat(nextNumber, 10);
 
@@ -221,7 +221,7 @@ $(document).ready(function(){
       operationStatus = false;
     }
 
-    else if(operation === "subtract"){
+    else if(operation === "subtract" && nextNumber !== ""){
       currentNumber = parseFloat(currentNumber, 10);
       nextNumber = parseFloat(nextNumber, 10);
 
