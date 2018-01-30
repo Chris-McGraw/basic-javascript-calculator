@@ -3,15 +3,11 @@ $(document).ready(function(){
 /* ----- Variable Declarations ----- */
 
   zeroed = true;
-
   numberIndex = 0;
-
   currentNumber = "";
   nextNumber = "";
-
   operation = "";
   equaled = false;
-
   operationStatus = false;
   decimalStatus = false;
   negativeStatus = false;
@@ -34,6 +30,50 @@ $(document).ready(function(){
   function checkScreenSizeAnswer(){
     if($("#screen-text").html().length > 15) {
       $("#screen-text").html("CHARACTER LIMIT");
+    }
+  }
+
+  function inputCurrentNumber(){
+    if(currentNumber.length <= 3){
+      $("#screen-text").html(currentNumber);
+    }
+    
+    else if(currentNumber.length > 3){
+      addCommas(currentNumber);
+      $("#screen-text").html(newNumber);
+    }
+
+    if(currentNumber.length > 12){
+      currentNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(currentNumber);
+    }
+  }
+
+  function inputNextNumber(){
+    if(nextNumber.length <= 3){
+      $("#screen-text").html(nextNumber);
+    }
+
+    else if(nextNumber.length > 3){
+      addCommas(nextNumber);
+      $("#screen-text").html(newNumber);
+    }
+
+    if(nextNumber.length > 12){
+      nextNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(nextNumber);
     }
   }
 
@@ -190,8 +230,6 @@ $(document).ready(function(){
     operationStatus = true;
     decimalStatus = false;
     negativeStatus = false;
-
-    /* newNumber = ""; */
   }
 
   function subtraction(){
@@ -343,16 +381,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "1";
-      $("#screen-text").append(1);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "1";
-      $("#screen-text").append(1);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -361,16 +395,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "2";
-      $("#screen-text").append(2);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "2";
-      $("#screen-text").append(2);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -379,16 +409,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "3";
-      $("#screen-text").append(3);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "3";
-      $("#screen-text").append(3);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -397,16 +423,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "4";
-      $("#screen-text").append(4);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "4";
-      $("#screen-text").append(4);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -415,16 +437,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "5";
-      $("#screen-text").append(5);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "5";
-      $("#screen-text").append(5);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -433,16 +451,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "6";
-      $("#screen-text").append(6);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "6";
-      $("#screen-text").append(6);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -451,16 +465,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "7";
-      $("#screen-text").append(7);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "7";
-      $("#screen-text").append(7);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -469,16 +479,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "8";
-      $("#screen-text").append(8);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "8";
-      $("#screen-text").append(8);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -487,16 +493,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "9";
-      $("#screen-text").append(9);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "9";
-      $("#screen-text").append(9);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -505,52 +507,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "0";
-
-      if(currentNumber.length <= 3){
-        $("#screen-text").html(currentNumber);
-      }
-
-      else if(currentNumber.length > 3){
-        addCommas(currentNumber);
-        $("#screen-text").html(newNumber);
-
-        console.log(currentNumber);
-      }
-
-      if(currentNumber.length > 12){
-        currentNumber = "CHARACTER LIMIT";
-
-        equaled = true;
-        operationStatus = true;
-        decimalStatus = true;
-
-        $("#screen-text").html(currentNumber);
-      }
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
-
-      if(nextNumber.length <= 3){
-        $("#screen-text").html(nextNumber);
-      }
-
-      else if(nextNumber.length > 3){
-        addCommas(nextNumber);
-        $("#screen-text").html(newNumber);
-
-        console.log(nextNumber);
-      }
-
-      if(nextNumber.length > 12){
-        nextNumber = "CHARACTER LIMIT";
-
-        equaled = true;
-        operationStatus = true;
-        decimalStatus = true;
-
-        $("#screen-text").html(nextNumber);
-      }
+      inputNextNumber();
     }
   });
 
