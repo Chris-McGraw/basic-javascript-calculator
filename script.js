@@ -26,7 +26,7 @@ $(document).ready(function(){
   }
 
   function checkScreenSize(){
-    if($("#screen-text").html().length > 12) {
+    if($("#screen-text").html().length > 15) {
       $("#screen-text").html("CHARACTER LIMIT");
     }
   }
@@ -34,6 +34,38 @@ $(document).ready(function(){
   function checkScreenSizeAnswer(){
     if($("#screen-text").html().length > 15) {
       $("#screen-text").html("CHARACTER LIMIT");
+    }
+  }
+
+  function addCommas(number){
+    if(number.length === 12){
+      newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6,9) + "," + number.slice(9);
+    }
+    else if(number.length === 11){
+      newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8);
+    }
+    else if(number.length === 10){
+      newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4,7) + "," + number.slice(7);
+    }
+
+    else if(number.length === 9){
+      newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6);
+    }
+    else if(number.length === 8){
+      newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5);
+    }
+    else if(number.length === 7){
+      newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4);
+    }
+
+    else if(number.length === 6){
+      newNumber = number.slice(0,3) + "," + number.slice(3);
+    }
+    else if(number.length === 5){
+      newNumber = number.slice(0,2) + "," + number.slice(2);
+    }
+    else if(number.length === 4){
+      newNumber = number.slice(0,1) + "," + number.slice(1);
     }
   }
 
@@ -411,12 +443,22 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "0";
-      $("#screen-text").append(0);
+      $("#screen-text").html(currentNumber);
+
+      if(currentNumber.length > 3){
+        addCommas(currentNumber);
+        $("#screen-text").html(newNumber);
+      }
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
       $("#screen-text").append(0);
+
+      if(nextNumber.length > 3){
+        addCommas(nextNumber);
+        $("#screen-text").html(newNumber);
+      }
     }
 
     if(equaled === false) {
