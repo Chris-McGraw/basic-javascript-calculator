@@ -191,7 +191,7 @@ $(document).ready(function(){
     decimalStatus = false;
     negativeStatus = false;
 
-    newNumber = "";
+    /* newNumber = ""; */
   }
 
   function subtraction(){
@@ -506,8 +506,6 @@ $(document).ready(function(){
     if(numberIndex === 0 && equaled === false){
       currentNumber += "0";
 
-      /* $("#screen-text").html(currentNumber); */
-
       if(currentNumber.length <= 3){
         $("#screen-text").html(currentNumber);
       }
@@ -518,12 +516,20 @@ $(document).ready(function(){
 
         console.log(currentNumber);
       }
+
+      if(currentNumber.length > 12){
+        currentNumber = "CHARACTER LIMIT";
+
+        equaled = true;
+        operationStatus = true;
+        decimalStatus = true;
+
+        $("#screen-text").html(currentNumber);
+      }
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
-
-      /* $("#screen-text").html(nextNumber); */
 
       if(nextNumber.length <= 3){
         $("#screen-text").html(nextNumber);
@@ -535,10 +541,16 @@ $(document).ready(function(){
 
         console.log(nextNumber);
       }
-    }
 
-    if(equaled === false) {
-      checkScreenSize();
+      if(nextNumber.length > 12){
+        nextNumber = "CHARACTER LIMIT";
+
+        equaled = true;
+        operationStatus = true;
+        decimalStatus = true;
+
+        $("#screen-text").html(nextNumber);
+      }
     }
   });
 
