@@ -49,7 +49,10 @@ $(document).ready(function(){
       else if(number.length === 11){
         newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8) + decimalSlice;
       }
-      else if(number.length === 10){
+      else if(number.length === 10 && number[0] === "-"){
+        newNumber = number.slice(0,4) + "," + number.slice(4,7) + "," + number.slice(7) + decimalSlice;
+      }
+      else if(number.length === 10 && number[0] !== "-"){
         newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4,7) + "," + number.slice(7) + decimalSlice;
       }
 
@@ -59,7 +62,10 @@ $(document).ready(function(){
       else if(number.length === 8){
         newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5) + decimalSlice;
       }
-      else if(number.length === 7){
+      else if(number.length === 7 && number[0] === "-"){
+        newNumber = number.slice(0,4) + "," + number.slice(4) + decimalSlice;
+      }
+      else if(number.length === 7 && number[0] !== "-"){
         newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4) + decimalSlice;
       }
 
@@ -69,7 +75,10 @@ $(document).ready(function(){
       else if(number.length === 5){
         newNumber = number.slice(0,2) + "," + number.slice(2) + decimalSlice;
       }
-      else if(number.length === 4){
+      else if(number.length === 4 && number[0] === "-"){
+        newNumber = number + decimalSlice;
+      }
+      else if(number.length === 4 && number[0] !== "-"){
         newNumber = number.slice(0,1) + "," + number.slice(1) + decimalSlice;
       }
 
@@ -85,7 +94,6 @@ $(document).ready(function(){
       else if(number.length === 11){
         newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8);
       }
-
       else if(number.length === 10 && number[0] === "-"){
         newNumber = number.slice(0,4) + "," + number.slice(4,7) + "," + number.slice(7);
       }
@@ -99,7 +107,6 @@ $(document).ready(function(){
       else if(number.length === 8){
         newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5);
       }
-
       else if(number.length === 7 && number[0] === "-"){
         newNumber = number.slice(0,4) + "," + number.slice(4);
       }
@@ -113,7 +120,6 @@ $(document).ready(function(){
       else if(number.length === 5){
         newNumber = number.slice(0,2) + "," + number.slice(2);
       }
-
       else if(number.length === 4 && number[0] === "-"){
         newNumber = number;
       }
