@@ -508,17 +508,17 @@ $(document).ready(function(){
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
 
-      $("#screen-text").html(nextNumber);
+      /* $("#screen-text").html(nextNumber); */
 
-      /* if(nextNumber.length <= 3){
+      if(nextNumber.length <= 3){
         $("#screen-text").html(nextNumber);
-      } */
+      }
 
-      if(nextNumber.length > 3){
+      else if(nextNumber.length > 3){
         addCommas(nextNumber);
         $("#screen-text").html(newNumber);
 
-        console.log(nextNumber);
+        console.log(nextNumber)
       }
     }
 
