@@ -3,15 +3,11 @@ $(document).ready(function(){
 /* ----- Variable Declarations ----- */
 
   zeroed = true;
-
   numberIndex = 0;
-
   currentNumber = "";
   nextNumber = "";
-
   operation = "";
   equaled = false;
-
   operationStatus = false;
   decimalStatus = false;
   negativeStatus = false;
@@ -26,7 +22,7 @@ $(document).ready(function(){
   }
 
   function checkScreenSize(){
-    if($("#screen-text").html().length > 12) {
+    if($("#screen-text").html().length > 15) {
       $("#screen-text").html("CHARACTER LIMIT");
     }
   }
@@ -34,6 +30,142 @@ $(document).ready(function(){
   function checkScreenSizeAnswer(){
     if($("#screen-text").html().length > 15) {
       $("#screen-text").html("CHARACTER LIMIT");
+    }
+  }
+
+  function inputCurrentNumber(){
+    if(currentNumber.length <= 3){
+      $("#screen-text").html(currentNumber);
+    }
+    
+    else if(currentNumber.length > 3){
+      addCommas(currentNumber);
+      $("#screen-text").html(newNumber);
+    }
+
+    if(currentNumber.length > 12){
+      currentNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(currentNumber);
+    }
+  }
+
+  function inputNextNumber(){
+    if(nextNumber.length <= 3){
+      $("#screen-text").html(nextNumber);
+    }
+
+    else if(nextNumber.length > 3){
+      addCommas(nextNumber);
+      $("#screen-text").html(newNumber);
+    }
+
+    if(nextNumber.length > 12){
+      nextNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(nextNumber);
+    }
+  }
+
+  function addCommas(number){
+    if(number.includes(".")){
+      i = number.indexOf(".");
+      decimalSlice = number.slice(i);
+      number = number.slice(0,i);
+
+      if(number.length === 12){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6,9) + "," + number.slice(9) + decimalSlice;
+      }
+      else if(number.length === 11){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8) + decimalSlice;
+      }
+      else if(number.length === 10 && number[0] === "-"){
+        newNumber = number.slice(0,4) + "," + number.slice(4,7) + "," + number.slice(7) + decimalSlice;
+      }
+      else if(number.length === 10 && number[0] !== "-"){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4,7) + "," + number.slice(7) + decimalSlice;
+      }
+
+      else if(number.length === 9){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6) + decimalSlice;
+      }
+      else if(number.length === 8){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5) + decimalSlice;
+      }
+      else if(number.length === 7 && number[0] === "-"){
+        newNumber = number.slice(0,4) + "," + number.slice(4) + decimalSlice;
+      }
+      else if(number.length === 7 && number[0] !== "-"){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4) + decimalSlice;
+      }
+
+      else if(number.length === 6){
+        newNumber = number.slice(0,3) + "," + number.slice(3) + decimalSlice;
+      }
+      else if(number.length === 5){
+        newNumber = number.slice(0,2) + "," + number.slice(2) + decimalSlice;
+      }
+      else if(number.length === 4 && number[0] === "-"){
+        newNumber = number + decimalSlice;
+      }
+      else if(number.length === 4 && number[0] !== "-"){
+        newNumber = number.slice(0,1) + "," + number.slice(1) + decimalSlice;
+      }
+
+      else if(number.length <= 3){
+        newNumber = number + decimalSlice;
+      }
+    }
+
+    else{
+      if(number.length === 12){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6,9) + "," + number.slice(9);
+      }
+      else if(number.length === 11){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8);
+      }
+      else if(number.length === 10 && number[0] === "-"){
+        newNumber = number.slice(0,4) + "," + number.slice(4,7) + "," + number.slice(7);
+      }
+      else if(number.length === 10 && number[0] !== "-"){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4,7) + "," + number.slice(7);
+      }
+
+      else if(number.length === 9){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6);
+      }
+      else if(number.length === 8){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5);
+      }
+      else if(number.length === 7 && number[0] === "-"){
+        newNumber = number.slice(0,4) + "," + number.slice(4);
+      }
+      else if(number.length === 7 && number[0] !== "-"){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4);
+      }
+
+      else if(number.length === 6){
+        newNumber = number.slice(0,3) + "," + number.slice(3);
+      }
+      else if(number.length === 5){
+        newNumber = number.slice(0,2) + "," + number.slice(2);
+      }
+      else if(number.length === 4 && number[0] === "-"){
+        newNumber = number;
+      }
+      else if(number.length === 4 && number[0] !== "-"){
+        newNumber = number.slice(0,1) + "," + number.slice(1);
+      }
     }
   }
 
@@ -133,7 +265,7 @@ $(document).ready(function(){
     }
 
     else if(nextNumber === "" && numberIndex === 1 && equaled === false) {
-      nextNumber += ".";
+      nextNumber += "0.";
       $("#screen-text").append("0.");
     }
 
@@ -249,16 +381,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "1";
-      $("#screen-text").append(1);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "1";
-      $("#screen-text").append(1);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -267,16 +395,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "2";
-      $("#screen-text").append(2);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "2";
-      $("#screen-text").append(2);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -285,16 +409,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "3";
-      $("#screen-text").append(3);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "3";
-      $("#screen-text").append(3);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -303,16 +423,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "4";
-      $("#screen-text").append(4);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "4";
-      $("#screen-text").append(4);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -321,16 +437,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "5";
-      $("#screen-text").append(5);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "5";
-      $("#screen-text").append(5);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -339,16 +451,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "6";
-      $("#screen-text").append(6);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "6";
-      $("#screen-text").append(6);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -357,16 +465,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "7";
-      $("#screen-text").append(7);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "7";
-      $("#screen-text").append(7);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -375,16 +479,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "8";
-      $("#screen-text").append(8);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "8";
-      $("#screen-text").append(8);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -393,16 +493,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "9";
-      $("#screen-text").append(9);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "9";
-      $("#screen-text").append(9);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
@@ -411,16 +507,12 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "0";
-      $("#screen-text").append(0);
+      inputCurrentNumber();
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
-      $("#screen-text").append(0);
-    }
-
-    if(equaled === false) {
-      checkScreenSize();
+      inputNextNumber();
     }
   });
 
