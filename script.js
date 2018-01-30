@@ -72,6 +72,10 @@ $(document).ready(function(){
       else if(number.length === 4){
         newNumber = number.slice(0,1) + "," + number.slice(1) + decimalSlice;
       }
+
+      else if(number.length <= 3){
+        newNumber = currentNumber;
+      }
     }
 
     else{
@@ -481,16 +485,9 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "0";
+      $("#screen-text").html(currentNumber);
 
-      /* $("#screen-text").html(currentNumber); */
-
-      if(currentNumber.length <= 3){
-
-        newNumber = currentNumber;
-        $("#screen-text").html(newNumber);
-      }
-
-      else if(currentNumber.length > 3){
+      if(currentNumber.length > 3){
         addCommas(currentNumber);
         $("#screen-text").html(newNumber);
       }
@@ -498,7 +495,7 @@ $(document).ready(function(){
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
-      $("#screen-text").html(nextNumber);
+      $("#screen-text").append(0);
 
       if(nextNumber.length > 3){
         addCommas(nextNumber);
