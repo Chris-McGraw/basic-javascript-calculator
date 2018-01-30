@@ -38,9 +38,6 @@ $(document).ready(function(){
   }
 
   function addCommas(number){
-
-    /* newNumber = ""; */
-
     if(number.includes(".")){
       i = number.indexOf(".");
       decimalSlice = number.slice(i);
@@ -77,7 +74,7 @@ $(document).ready(function(){
       }
 
       else if(number.length <= 3){
-        newNumber = number + decimalSlice;
+        newNumber = currentNumber;
       }
     }
 
@@ -175,8 +172,6 @@ $(document).ready(function(){
     operationStatus = true;
     decimalStatus = false;
     negativeStatus = false;
-
-    newNumber = "";
   }
 
   function subtraction(){
@@ -490,35 +485,21 @@ $(document).ready(function(){
 
     if(numberIndex === 0 && equaled === false){
       currentNumber += "0";
+      $("#screen-text").html(currentNumber);
 
-      /* $("#screen-text").html(currentNumber); */
-
-      if(currentNumber.length <= 3){
-        $("#screen-text").html(currentNumber);
-      }
-
-      else if(currentNumber.length > 3){
+      if(currentNumber.length > 3){
         addCommas(currentNumber);
         $("#screen-text").html(newNumber);
-
-        console.log(currentNumber);
       }
     }
 
     else if(numberIndex === 1 && equaled === false) {
       nextNumber += "0";
+      $("#screen-text").append(0);
 
-      /* $("#screen-text").html(nextNumber); */
-
-      if(nextNumber.length <= 3){
-        $("#screen-text").html(nextNumber);
-      }
-
-      else if(nextNumber.length > 3){
+      if(nextNumber.length > 3){
         addCommas(nextNumber);
         $("#screen-text").html(newNumber);
-
-        console.log(nextNumber)
       }
     }
 
