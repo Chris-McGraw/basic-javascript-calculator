@@ -38,34 +38,76 @@ $(document).ready(function(){
   }
 
   function addCommas(number){
-    if(number.length === 12){
-      newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6,9) + "," + number.slice(9);
-    }
-    else if(number.length === 11){
-      newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8);
-    }
-    else if(number.length === 10){
-      newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4,7) + "," + number.slice(7);
+    if(number.includes(".")){
+      i = number.indexOf(".");
+      decimalSlice = number.slice(i);
+      number = number.slice(0,i);
+
+      if(number.length === 12){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6,9) + "," + number.slice(9) + decimalSlice;
+      }
+      else if(number.length === 11){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8) + decimalSlice;
+      }
+      else if(number.length === 10){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4,7) + "," + number.slice(7) + decimalSlice;
+      }
+
+      else if(number.length === 9){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6) + decimalSlice;
+      }
+      else if(number.length === 8){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5) + decimalSlice;
+      }
+      else if(number.length === 7){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4) + decimalSlice;
+      }
+
+      else if(number.length === 6){
+        newNumber = number.slice(0,3) + "," + number.slice(3) + decimalSlice;
+      }
+      else if(number.length === 5){
+        newNumber = number.slice(0,2) + "," + number.slice(2) + decimalSlice;
+      }
+      else if(number.length === 4){
+        newNumber = number.slice(0,1) + "," + number.slice(1) + decimalSlice;
+      }
+
+      else if(number.length <= 3){
+        newNumber = currentNumber;
+      }
     }
 
-    else if(number.length === 9){
-      newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6);
-    }
-    else if(number.length === 8){
-      newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5);
-    }
-    else if(number.length === 7){
-      newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4);
-    }
+    else{
+      if(number.length === 12){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6,9) + "," + number.slice(9);
+      }
+      else if(number.length === 11){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5,8) + "," + number.slice(8);
+      }
+      else if(number.length === 10){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4,7) + "," + number.slice(7);
+      }
 
-    else if(number.length === 6){
-      newNumber = number.slice(0,3) + "," + number.slice(3);
-    }
-    else if(number.length === 5){
-      newNumber = number.slice(0,2) + "," + number.slice(2);
-    }
-    else if(number.length === 4){
-      newNumber = number.slice(0,1) + "," + number.slice(1);
+      else if(number.length === 9){
+        newNumber = number.slice(0,3) + "," + number.slice(3,6) + "," + number.slice(6);
+      }
+      else if(number.length === 8){
+        newNumber = number.slice(0,2) + "," + number.slice(2,5) + "," + number.slice(5);
+      }
+      else if(number.length === 7){
+        newNumber = number.slice(0,1) + "," + number.slice(1,4) + "," + number.slice(4);
+      }
+
+      else if(number.length === 6){
+        newNumber = number.slice(0,3) + "," + number.slice(3);
+      }
+      else if(number.length === 5){
+        newNumber = number.slice(0,2) + "," + number.slice(2);
+      }
+      else if(number.length === 4){
+        newNumber = number.slice(0,1) + "," + number.slice(1);
+      }
     }
   }
 
