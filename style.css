@@ -3,11 +3,12 @@ body {
   padding: 0;
   cursor: default;
   user-select: none;
+  background-color: #7d8488;
 }
 
 #calc-main-body {
   margin: auto;
-  margin-top: 20px;
+  margin-top: 80px;
   width: 350px;
   height: 500px;
   border-radius: 20px;
