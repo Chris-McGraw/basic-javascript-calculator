@@ -282,6 +282,10 @@ $(document).ready(function(){
       $("#screen-text").append(".");
     }
     decimalStatus = true;
+
+    if(equaled === false) {
+      checkScreenSize();
+    }
   }
 
   function negativeToggle() {
