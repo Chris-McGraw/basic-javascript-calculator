@@ -23,13 +23,29 @@ $(document).ready(function(){
 
   function checkScreenSize(){
     if($("#screen-text").html().length > 15) {
-      $("#screen-text").html("CHARACTER LIMIT");
+
+      currentNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(currentNumber);
     }
   }
 
   function checkScreenSizeAnswer(){
     if($("#screen-text").html().length > 15) {
-      $("#screen-text").html("CHARACTER LIMIT");
+
+      currentNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(currentNumber);
     }
   }
 
@@ -37,7 +53,7 @@ $(document).ready(function(){
     if(currentNumber.length <= 3){
       $("#screen-text").html(currentNumber);
     }
-    
+
     else if(currentNumber.length > 3){
       addCommas(currentNumber);
       $("#screen-text").html(newNumber);
@@ -274,6 +290,10 @@ $(document).ready(function(){
       $("#screen-text").append(".");
     }
     decimalStatus = true;
+
+    if(equaled === false) {
+      checkScreenSize();
+    }
   }
 
   function negativeToggle() {
@@ -372,6 +392,24 @@ $(document).ready(function(){
     }
 
     checkScreenSizeAnswer();
+  }
+
+  function clearScreen(){
+    $("#screen-text").html(0);
+    $("#button-multiplication").removeClass("button-pressed");
+    $("#button-division").removeClass("button-pressed");
+    $("#button-addition").removeClass("button-pressed");
+    $("#button-subtraction").removeClass("button-pressed");
+
+    zeroed = true;
+    numberIndex = 0;
+    currentNumber = "";
+    nextNumber = "";
+    equaled = false;
+
+    operationStatus = false;
+    decimalStatus = false;
+    negativeStatus = false;
   }
 
 /* ----- Number Button Function Executions ----- */
@@ -555,25 +593,13 @@ $(document).ready(function(){
   });
 
   $("#button-equals").on("click", function(){
-    totalEquals();
+    if(equaled === false){
+      totalEquals();
+    }
   });
 
   $("#button-clear").on("click", function(){
-    $("#screen-text").html(0);
-    $("#button-multiplication").removeClass("button-pressed");
-    $("#button-division").removeClass("button-pressed");
-    $("#button-addition").removeClass("button-pressed");
-    $("#button-subtraction").removeClass("button-pressed");
-
-    zeroed = true;
-    numberIndex = 0;
-    currentNumber = "";
-    nextNumber = "";
-    equaled = false;
-
-    operationStatus = false;
-    decimalStatus = false;
-    negativeStatus = false;
+    clearScreen();
   });
 
 });
