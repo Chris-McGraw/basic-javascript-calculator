@@ -23,7 +23,15 @@ $(document).ready(function(){
 
   function checkScreenSize(){
     if($("#screen-text").html().length > 15) {
-      $("#screen-text").html("CHARACTER LIMIT");
+
+      currentNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(currentNumber);
     }
   }
 
