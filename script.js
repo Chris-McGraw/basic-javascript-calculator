@@ -29,7 +29,15 @@ $(document).ready(function(){
 
   function checkScreenSizeAnswer(){
     if($("#screen-text").html().length > 15) {
-      $("#screen-text").html("CHARACTER LIMIT");
+
+      currentNumber = "CHARACTER LIMIT";
+
+      equaled = true;
+      operationStatus = true;
+      decimalStatus = true;
+      negativeStatus = true;
+
+      $("#screen-text").html(currentNumber);
     }
   }
 
@@ -573,7 +581,9 @@ $(document).ready(function(){
   });
 
   $("#button-equals").on("click", function(){
-    totalEquals();
+    if(equaled === false){
+      totalEquals();
+    }
   });
 
   $("#button-clear").on("click", function(){
